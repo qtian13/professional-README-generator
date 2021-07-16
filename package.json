@@ -20,5 +20,6 @@
   "bugs": {
     "url": "https://github.com/qtian13/professional-README-generator/issues"
   },
-  "homepage": "https://github.com/qtian13/professional-README-generator#readme"
+  "homepage": "https://github.com/qtian13/professional-README-generator#readme",
+  "devDependencies": {}
 }

@@ -16,6 +16,9 @@ npm i inquirer
 npm i fs
 node index.js
 ```
+## Demo Command & File
+![Demo Command](assets/images/Demo_command.png)
+![Demo Result](assets/images/Demo_result.png)
 ## Demo GIF:
 ![Demo GIF](assets/images/demo.gif)
 ## Questions:
