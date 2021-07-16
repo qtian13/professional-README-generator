@@ -27,17 +27,17 @@ const questions = [
     {
         type: "checkbox",
         message: "What kind of license should your project have?",
-        name: "license",
+        name: "licenseArray",
         choices: ["MIT", "GNU GPLv3", "GNU AGPLv3", "GNU LGPLv3", "GNU GPLv2", "Mozilla Public License 2.0", "Apache License 2.0", "ISC", "Boost Software License 1.0", "The Unlicense"],
     },
     {
         type: "input",
-        message: "What command should be run to install dependencies? Please use \n to create new line",
+        message: "What command should be run to install dependencies? Please use \\n to create new line",
         name: "installationInstructions",
     },
     {
         type: "input",
-        message: "What command should be run to run tests? Please use \n to create new line",
+        message: "What command should be run to run tests? Please use \\n to create new line",
         name: "testInstructions",
     },
     {
@@ -64,9 +64,9 @@ function writeToFile(fileName, data) {
 function init() {
     inquirer.prompt(questions)
         .then((data) => {
-            console.log("Generating ./yourREADME.md ...");
+            console.log("Generating ./output/yourREADME.md ...");
             var content = generateMarkdown(data);
-            writeToFile("yourREADME.md", content);
+            writeToFile("./output/yourREADME.md", content);
         })
 }
 

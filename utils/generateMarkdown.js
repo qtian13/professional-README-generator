@@ -79,19 +79,20 @@ function renderLicenseLink(license) {
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
-  let licenseBlock = ``;
-  license.forEach((licenseTerm) => 
-    licenseBlock += `[![license](${renderLicenseBadge(licenseTerm)})](${renderLicenseLink(licenseTerm)})
-  
-`);
-  return licenseBlock;
+  if (license.length === 0) {
+    return "";
+  }
+  else {
+    return `The application is covered under license: ${license.join(", ")}. Please click the badge at the top to check more details.`;
+  }
 }
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  var {username, email, title, description, license, installationInstructions, testInstructions, usageInfomation, contributionGuidlines} = data;
-  return `# ${title}
-## Description:
+  var {username, email, title, description, licenseArray, installationInstructions, testInstructions, usageInfomation, contributionGuidlines} = data;
+  return `${(licenseArray.length === 0) ? "" : licenseArray.map(license => `[![license](${renderLicenseBadge(license)})](${renderLicenseLink(license)})`).join(` `)}
+# ${title}
+## Description
 ${description}
 ## Table of Contents
 * [Installation](#installation)
@@ -100,25 +101,25 @@ ${description}
 * [Contributing](#contributing)
 * [Tests](#tests)
 * [Questions](#questions)
-## Installation:
+## Installation
 \`\`\`bash
 ${installationInstructions.split("\\n").map(element=>element.trim()).join(`
 
 `)}
 \`\`\`
-## Usage:
+## Usage
 ${usageInfomation}
 ## License
-${renderLicenseSection(license)}
-## Contributing:
+${renderLicenseSection(licenseArray)}
+## Contributing
 ${contributionGuidlines}
-## Tests:
+## Tests
 \`\`\`console
 ${testInstructions.split("\\n").map(element=>element.trim()).join(`
 
 `)}
 \`\`\`
-## Questions:
+## Questions
 [Click to check My GitHub profile](https://github.com/${username})\n
 Please reach me out with additional questions!\n
 Emails: ${email}
