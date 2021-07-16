@@ -101,8 +101,8 @@ ${description}
 * [Tests](#tests)
 * [Questions](#questions)
 ## Installation:
-\`\`\`console
-${installationInstructions.split("\\n").join(`
+\`\`\`bash
+${installationInstructions.split("\\n").map(element=>element.trim()).join(`
 
 `)}
 \`\`\`
@@ -114,11 +114,13 @@ ${renderLicenseSection(license)}
 ${contributionGuidlines}
 ## Tests:
 \`\`\`console
-${testInstructions}
+${testInstructions.split("\\n").map(element=>element.trim()).join(`
+
+`)}
 \`\`\`
 ## Questions:
-Please reach me out with additional questions!\n
 [Click to check My GitHub profile](https://github.com/${username})\n
+Please reach me out with additional questions!\n
 Emails: ${email}
 `;
 }

@@ -37,7 +37,7 @@ const questions = [
     },
     {
         type: "input",
-        message: "What command should be run to run tests",
+        message: "What command should be run to run tests? Please use \n to create new line",
         name: "testInstructions",
     },
     {
@@ -56,7 +56,7 @@ const questions = [
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
     fs.writeFile(fileName, data, (err) =>
-    err ? console.error(err) : console.log('Success!')
+    err ? console.log(err) : console.log('Success!')
   );
 }
 
@@ -65,7 +65,7 @@ function init() {
     inquirer.prompt(questions)
         .then((data) => {
             var content = generateMarkdown(data);
-            writeToFile("sampleREADME.md", content);
+            writeToFile("yourREADME.md", content);
         })
 }
 
