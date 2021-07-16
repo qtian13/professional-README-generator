@@ -1,7 +1,7 @@
 // TODO: Include packages needed for this application
 const fs = require('fs');
 const inquirer = require('inquirer');
-const READMEGenerator = require('./utils/generateMarkdown.js');
+const generateMarkdown = require('./utils/generateMarkdown.js');
 // TODO: Create an array of questions for user input
 const questions = [
     {
@@ -28,11 +28,11 @@ const questions = [
         type: "checkbox",
         message: "What kind of license should your project have?",
         name: "license",
-        choices: ["MIT", ""],
+        choices: ["MIT", "GNU GPLv3", "GNU AGPLv3", "GNU LGPLv3", "GNU GPLv2", "Mozilla Public License 2.0", "Apache License 2.0", "ISC", "Boost Software License 1.0", "The Unlicense"],
     },
     {
         type: "input",
-        message: "What command should be run to install dependencies?",
+        message: "What command should be run to install dependencies? Please use \n to create new line",
         name: "installationInstructions",
     },
     {
@@ -55,7 +55,7 @@ const questions = [
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    fs.writeFile("./Sample/" + fileName, data, (err) =>
+    fs.writeFile(fileName, data, (err) =>
     err ? console.error(err) : console.log('Success!')
   );
 }
@@ -64,9 +64,8 @@ function writeToFile(fileName, data) {
 function init() {
     inquirer.prompt(questions)
         .then((data) => {
-            console.log(data);
-            // var content = READMEGenerator.generateMarkdown(data);
-            // writeToFile("README.md", content);
+            var content = generateMarkdown(data);
+            writeToFile("sampleREADME.md", content);
         })
 }
 
